@@ -6,3 +6,4 @@ declare module '*.less'
 
 // 声明 Vite 的虚拟模块（针对你的 SVG 插件）
 declare module 'virtual:svg-icons-register'
+/// <reference types="vite/client" />
