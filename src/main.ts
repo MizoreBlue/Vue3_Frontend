@@ -9,15 +9,25 @@ import { zhCn } from 'element-plus/es/locale/index.mjs'
 
 import 'virtual:svg-icons-register' // 引入 SVG 图标注册脚本
 
-const app = createApp(App)
-app.use(ElementPlus, { locale: zhCn }) // 设置 Element Plus 的语言为中文
+// 引入模板的全局样式
+import '@/styles/index.scss'
 
 // 导入自定义插件 用于注册全局组件
 import globalComponents from '@/components'
+
+// 导入路由
+import router from '@/router'
+
+// 引入仓库
+import pinia from '@/store'
+
+const app = createApp(App)
+app.use(ElementPlus, { locale: zhCn }) // 设置 Element Plus 的语言为中文
+
 // 调用这行代码时，回去执行 globalComponents 插件对象的 install 方法，安装全局组件
 app.use(globalComponents)
 
-// 引入模板的全局样式
-import '@/styles/index.scss'
+app.use(router) // 使用路由
+app.use(pinia) // 使用仓库
 
 app.mount('#app')
