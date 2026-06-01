@@ -7,15 +7,27 @@ import { LoginAPI } from '@/api/user'
 const useUserStore = defineStore('user', {
   // 小仓库存贮数据的地方
   state: () => {
-    return {}
+    return {
+      token: localStorage.getItem('token') || '', //用户唯一标识
+    }
   },
   //   异步|逻辑的地方
   actions: {
     // 用户登录的方法
     async userLogin(data: LoginForm) {
-      console.log('用户登录了', data)
-      const result = await LoginAPI(data)
-      console.log('登录接口返回的数据', result)
+      // 登录请求
+      const result: any = await LoginAPI(data)
+      // 登录请求成功
+      if (result.code === 200) {
+        // 设置store
+        this.token = result.data.token
+        // 将 token 存储到 localStorage 中，以便在页面刷新后仍然可以保持登录状态
+        localStorage.setItem('token', result.data.token)
+        return 'ok'
+      } else {
+        // 登录失败，返回失败的Promise对象
+        return Promise.reject(new Error(result.data.message))
+      }
     },
   },
   // 计算属性的地方
