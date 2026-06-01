@@ -7,20 +7,11 @@
           <h1>Hello</h1>
           <h2>欢迎来到硅谷甄选</h2>
           <el-form-item>
-            <el-input
-              placeholder="请输入用户名"
-              :prefix-icon="User"
-              v-model="loginForm.username"
-            ></el-input>
+            <el-input placeholder="请输入用户名" :prefix-icon="User" v-model="loginForm.username"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-input
-              placeholder="请输入密码"
-              type="password"
-              :prefix-icon="Lock"
-              v-model="loginForm.password"
-              show-password
-            ></el-input>
+            <el-input placeholder="请输入密码" type="password" :prefix-icon="Lock" v-model="loginForm.password"
+              show-password></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" style="width: 100%" @click="login">登录</el-button>
@@ -41,8 +32,10 @@ let loginForm = reactive({
   password: '111111',
 })
 
-const login = () => {
-  userStore.userLogin(loginForm)
+const login = async () => {
+
+  let result = await userStore.userLogin(loginForm)
+  console.log(result)
 }
 </script>
 <style lang="scss" scoped>
