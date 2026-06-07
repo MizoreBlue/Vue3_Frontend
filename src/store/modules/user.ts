@@ -2,13 +2,18 @@
 import { defineStore } from 'pinia'
 // 导入类型
 import type { LoginForm } from '@/api/user/type'
+import type { UserState } from './types/type'
+
 // 定义一个用户相关的仓库，命名为 user
 import { LoginAPI } from '@/api/user'
+import { constantRoutes } from '@/router/router'
+
 const useUserStore = defineStore('user', {
   // 小仓库存贮数据的地方
-  state: () => {
+  state: (): UserState => {
     return {
       token: localStorage.getItem('token') || '', //用户唯一标识
+      menuRoutes: constantRoutes, // 用于生成菜单列表的路由数组
     }
   },
   //   异步|逻辑的地方
