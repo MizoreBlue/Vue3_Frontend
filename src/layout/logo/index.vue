@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img src="../../../public/logo.png" alt="" />
+    <img src="../../../public/blackcat.svg" alt="" />
     <p>Mizozre运营平台</p>
   </div>
 </template>

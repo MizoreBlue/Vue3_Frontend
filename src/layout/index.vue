@@ -14,7 +14,7 @@
     <div class="layout_tabbar">456</div>
     <!-- 内容展示区域 -->
     <div class="layout_main">
-      <p style="height: 100000px; background-color: red">aa</p>
+      <p style="height: 1000px; background-color: red">aa</p>
     </div>
   </div>
 </template>

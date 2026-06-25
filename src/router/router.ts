@@ -7,6 +7,7 @@ export const constantRoutes = [
     meta: {
       title: '登录', //菜单标题
       hidden: true, //是否展示标题
+      icon: 'StarFilled',
     },
   },
   {
@@ -17,6 +18,7 @@ export const constantRoutes = [
     meta: {
       title: 'layout',
       hidden: false,
+      icon: 'Comment',
     },
     children: [
       {
@@ -25,6 +27,7 @@ export const constantRoutes = [
         meta: {
           title: '首页',
           hidden: false,
+          icon: 'HomeFilled',
         },
       },
       {
@@ -33,6 +36,7 @@ export const constantRoutes = [
         meta: {
           title: '测试',
           hidden: false,
+          icon: 'Promotion',
         },
       },
     ],
@@ -44,6 +48,7 @@ export const constantRoutes = [
     meta: {
       title: '404',
       hidden: true,
+      icon: 'Grid',
     },
   },
   {
@@ -53,6 +58,7 @@ export const constantRoutes = [
     meta: {
       title: '任意路由',
       hidden: true,
+      icon: 'RemoveFilled',
     },
   },
 ]
