@@ -3,7 +3,7 @@
     <template v-for="(item, index) in menuList" :key="item.path">
       <!-- 如果这个路由没有孩子 -->
       <template v-if="!item.children">
-        <el-menu-item v-if="!item.meta.hidden" :index="item.path">
+        <el-menu-item v-if="!item.meta.hidden" :index="item.path" @click="goRoute">
           <template #title>
             <el-icon>
               <component :is="item.meta.icon"></component>
@@ -14,7 +14,7 @@
       </template>
       <!-- 路由有且仅有一个孩子 -->
       <template v-if="item.children && item.children.length == 1">
-        <el-menu-item v-if="!item.hidden" :index="item.children[0].path">
+        <el-menu-item v-if="!item.hidden" :index="item.children[0].path" @click="goRoute">
           <template #title>
             <el-icon>
               <component :is="item.children[0].meta.icon"></component>
@@ -40,8 +40,19 @@
   </div>
 </template>
 
-<script setup name="Menu">
+<script lang="ts" setup name="Menu">
+// 路由
+import { useRouter } from 'vue-router'
+// 父传子属性
 defineProps(['menuList'])
+let $router = useRouter()
+
+const goRoute = (vc: any) => {
+  console.log(vc)
+  // 路由跳转
+  console.log(vc.index)
+  $router.push(vc.index)
+}
 </script>
 
 <style lang="scss" scoped></style>
